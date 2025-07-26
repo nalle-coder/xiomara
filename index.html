@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para mi Hermana</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: cambiarFondo 20s infinite;
+      background-size: 400% 400%;
+    }
+
+    @keyframes cambiarFondo {
+      0% { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
+      25% { background: linear-gradient(45deg, #a1c4fd, #c2e9fb); }
+      50% { background: linear-gradient(45deg, #fbc2eb, #a6c1ee); }
+      75% { background: linear-gradient(45deg, #ffecd2, #fcb69f); }
+      100% { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
+    }
+
+    h1 {
+      font-size: 3em;
+      color: white;
+      text-shadow: 2px 2px 15px hotpink;
+      margin-bottom: 20px;
+      transform: rotateX(20deg);
+    }
+
+    .mensaje {
+      color: white;
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 30px;
+      animation: brillo 2s infinite alternate;
+      text-shadow: 0 0 10px #ff6ec4, 0 0 20px #f9f, 0 0 30px #f0f;
+    }
+
+    @keyframes brillo {
+      from { opacity: 0.6; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.05); }
+    }
+
+    .galeria {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .galeria img {
+      width: 180px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+      transition: transform 0.5s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.1) rotateY(10deg);
+    }
+
+    .corazones {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .corazon {
+      position: absolute;
+      color: pink;
+      font-size: 2em;
+      animation: flotar 5s linear infinite;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: pink;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #fff;
+      cursor: pointer;
+      animation: brillo 1.5s infinite alternate;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #sorpresa {
+      margin-top: 20px;
+      color: white;
+      font-size: 1.5em;
+      text-align: center;
+      display: none;
+      animation: volar 2s ease-out;
+    }
+
+    @keyframes volar {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para ti, mi hermanita 💖</h1>
+  <div class="mensaje">Siempre serás mi mejor amiga y mi apoyo ✨</div>
+
+  <div class="galeria">
+    <img src="foto1.jpg" alt="Foto 1" />
+    <img src="foto2.jpg" alt="Foto 2" />
+    <img src="foto3.jpg" alt="Foto 3" />
+  </div>
+
+  <button onclick="mostrarSorpresa()">Haz clic para leer algo especial 💌</button>
+  <div id="sorpresa">¡Eres una persona única y valiosa! 💖 Te amo con todo mi corazón 💕</div>
+
+  <div class="corazones" id="corazones"></div>
+
+  <!-- Música de fondo (puedes cambiarla por otra libre si deseas) -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <script>
+    // Mostrar mensaje bonito al hacer clic
+    function mostrarSorpresa() {
+      document.getElementById('sorpresa').style.display = 'block';
+    }
+
+    // Corazones flotantes
+    const contenedor = document.getElementById('corazones');
+    setInterval(() => {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      corazon.innerText = '💖';
+      contenedor.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 10000);
+    }, 500);
+  </script>
+</body>
+</html>
+
